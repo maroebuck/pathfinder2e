@@ -1,16 +1,16 @@
-﻿version: 2
+version: 2
 jobs:
   build:
-    working_directory: ~/ClientApp
+    working_directory: ~/client-app
     docker:
       - image: circleci/node:10-browsers
     steps:
       - checkout
       - restore_cache:
-          key: ClientApp-{{ .Branch }}-{{ checksum "package-lock.json" }}
+          key: client-app-{{ .Branch }}-{{ checksum "package-lock.json" }}
       - run: npm install
       - save_cache:
-          key: ClientApp-{{ .Branch }}-{{ checksum "package-lock.json" }}
+          key: client-app-{{ .Branch }}-{{ checksum "package-lock.json" }}
           paths:
             - "node_modules"
       - run: npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
