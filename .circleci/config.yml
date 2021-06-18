@@ -1,7 +1,7 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/pathfinder2e/pathfinder
+    working_directory: ~/Pathfinder
     docker:
       - image: circleci/node:10-browsers
     steps:
