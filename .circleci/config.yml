@@ -1,7 +1,7 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/maroebuck/pathfinder2e/Pathfinder/ClientApp
+    working_directory: ../Pathfinder/ClientApp
     docker:
       - image: circleci/node:10-browsers
     steps:
