@@ -1,16 +1,16 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/pathfinder2e/pathfinder/
+
     docker:
       - image: circleci/node:10-browsers
     steps:
       - checkout
       #- restore_cache:
       #    key: Pathfinder/ClientApp-{{ .Branch }}-{{ checksum "package.json" }}
-      #- run: npm install
+      - run: npm install
       #- save_cache:
       #    key: Pathfinder/ClientApp-{{ .Branch }}-{{ checksum "package.json" }}
       #    paths:
-      #      - "node_modules"
+       #     - "node_modules"
       - run: npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
