@@ -5,7 +5,7 @@ jobs:
     docker:
       - image: circleci/node:14-browsers
         environment:
-          CHROME_BIN: /usr/bin/google-chrome
+          CHROME_BIN: /usr/bin/google-chrome karma start --single-run 
     steps:
       - checkout
       - run: mkdir test-reports
