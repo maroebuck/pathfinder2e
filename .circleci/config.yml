@@ -3,14 +3,8 @@ jobs:
   build:
     working_directory: ~/my-project/Pathfinder/ClientApp
     docker:
-      - image: circleci/node:14-browsers
+      - image: circleci/node:14
     steps:
       - checkout
-      - restore_cache:
-          key: my-project/Pathfinder/ClientApp-{{ .Branch }}-{{ checksum "package.json" }}
       - run: npm install
-      - save_cache:
-          key: my-project/Pathfinder/ClientApp-{{ .Branch }}-{{ checksum "package.json" }}
-          paths:
-            - "node_modules"
       - run: npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
