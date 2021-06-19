@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: ~/my-project
     docker:
-      - image: circleci/node:14
+      - image: circleci/node:14-browsers
         environment:
           CHROME_BIN: /usr/bin/google-chrome
     steps:
@@ -15,4 +15,4 @@ jobs:
           key: my-project-{{ .Branch }}-{{ checksum "package-lock.json" }}
           paths:
             - "node_modules"
-      - run: npm --prefix ./Pathfinder/ClientApp run test -- --browsers=ChromeHeadlessCI
+      - run: npm --prefix ./Pathfinder/ClientApp run test -- --no-watch --no-progress --browsers=ChromeHeadless
