@@ -1,10 +1,9 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/pathfinder2e/Pathfinder/ClientApp
+    working_directory: ~/pathfinder2e
     docker:
       - image: circleci/node:14
     steps:
       - checkout
-      - run: npm install
-      - run: npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
+      - run: npm --prefix ./Pathfinder/ClientApp run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
