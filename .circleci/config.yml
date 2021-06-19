@@ -15,4 +15,4 @@ jobs:
           key: my-project-{{ .Branch }}-{{ checksum "package-lock.json" }}
           paths:
             - "node_modules"
-      - run: npm --prefix ./Pathfinder/ClientApp run test -- --no-watch --no-progress --browsers=ChromeHeadless
+      - run: npm --prefix ./Pathfinder/ClientApp run test:ci -- --no-watch --no-progress --browsers=ChromeHeadless
