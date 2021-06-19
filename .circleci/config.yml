@@ -1,7 +1,7 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/my-project
+    working_directory: ~/pathfinder2e
     docker:
       - image: circleci/node:14-browsers
         environment:
@@ -9,10 +9,10 @@ jobs:
     steps:
       - checkout
       - restore_cache: 
-          key: my-project-{{ .Branch }}-{{ checksum "package-lock.json" }}
+          key: pathfinder2e-{{ .Branch }}-{{ checksum "package-lock.json" }}
       - run: npm --prefix ./Pathfinder/ClientApp install
       - save_cache:
-          key: my-project-{{ .Branch }}-{{ checksum "package-lock.json" }}
+          key: pathfinder2e-{{ .Branch }}-{{ checksum "package-lock.json" }}
           paths:
             - "node_modules"
-      - run: npm --prefix ./Pathfinder/ClientApp run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
+      - run: npm --prefix ./Pathfinder/ClientApp run test:ci -- --browsers=ChromeHeadlessCI
